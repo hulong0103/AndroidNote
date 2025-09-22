@@ -1,150 +1,245 @@
-![](http://ww1.sinaimg.cn/large/005Xtdi2jw1f6307cu3krj30rs05kglz.jpg)
+# Java REST API 服务
 
-### 作者微博: [@GcsSloop](http://weibo.com/GcsSloop)
+这是一个基于Spring Boot开发的REST API服务，提供用户管理功能，可以部署到服务器供外部使用。
 
-我的安卓学习笔记，记录学习过程中遇到的问题,以及我的一些经验总结。如果出现链接失效等情况可以提交 Issues 提醒我修改相关内容。
+## 功能特性
 
-> #### PS:点击分类标题可以查看该分类的详细信息。 
+- ✅ 用户CRUD操作（创建、读取、更新、删除）
+- ✅ 数据验证和错误处理
+- ✅ 跨域支持（CORS）
+- ✅ API文档（Swagger UI）
+- ✅ 健康检查接口
+- ✅ 统一响应格式
+- ✅ 数据库支持（H2/MySQL）
+- ✅ Docker容器化部署
+- ✅ Nginx反向代理
 
-## [博客](http://www.gcssloop.com/#blog "GcsSloop的博客")
+## 技术栈
 
-我的个人博客，在博客中可以获得更好的阅读体验，同时在博客的评论区可以更及时的向我反馈文章中的问题。
+- **Java 17**
+- **Spring Boot 3.2.0**
+- **Spring Data JPA**
+- **H2/MySQL数据库**
+- **Maven**
+- **Docker**
+- **Nginx**
 
-<a href="http://www.gcssloop.com/#blog" target="_blank"> <img src="http://ww1.sinaimg.cn/large/005Xtdi2jw1f70uy1873sj315o0dwae0.jpg" width="300"/> </a>
+## 快速开始
 
-******
+### 1. 本地开发
 
-<p id="custom_view" />
-## [自定义View](https://github.com/GcsSloop/AndroidNote/tree/master/CustomView/README.md)
+#### 环境要求
+- Java 17+
+- Maven 3.6+
 
-* 基础篇
-    * [安卓自定义View基础 - 坐标系](https://github.com/GcsSloop/AndroidNote/blob/master/CustomView/Base/%5B01%5DCoordinateSystem.md)
-    * [安卓自定义View基础 - 角度弧度](https://github.com/GcsSloop/AndroidNote/blob/master/CustomView/Base/%5B02%5DAngleAndRadian.md)
-    * [安卓自定义View基础 - 颜色](https://github.com/GcsSloop/AndroidNote/blob/master/CustomView/Base/%5B03%5DColor.md)
-* 进阶篇    
-    * [安卓自定义View进阶 - 分类和流程](https://github.com/GcsSloop/AndroidNote/blob/master/CustomView/Advance/%5B01%5DCustomViewProcess.md)
-    * [安卓自定义View进阶 - 绘制基本图形](https://github.com/GcsSloop/AndroidNote/blob/master/CustomView/Advance/%5B02%5DCanvas_BasicGraphics.md)
-    * [安卓自定义View进阶 - 画布操作](https://github.com/GcsSloop/AndroidNote/blob/master/CustomView/Advance/%5B03%5DCanvas_Convert.md)
-    * [安卓自定义View进阶 - 图片文字](https://github.com/GcsSloop/AndroidNote/blob/master/CustomView/Advance/%5B04%5DCanvas_PictureText.md)
-    * [安卓自定义View进阶 - Path基本操作](https://github.com/GcsSloop/AndroidNote/blob/master/CustomView/Advance/%5B05%5DPath_Basic.md)
-    * [安卓自定义View进阶 - 贝塞尔曲线](https://github.com/GcsSloop/AndroidNote/blob/master/CustomView/Advance/%5B06%5DPath_Bezier.md)
-    * [安卓自定义View进阶 - Path完结篇(伪)](https://github.com/GcsSloop/AndroidNote/blob/master/CustomView/Advance/%5B07%5DPath_Over.md)
-    * [安卓自定义View进阶 - Path玩出花样(PathMeasure)](https://github.com/GcsSloop/AndroidNote/blob/master/CustomView/Advance/%5B08%5DPath_Play.md)
-    * [安卓自定义View进阶 - Matrix原理](https://github.com/GcsSloop/AndroidNote/blob/master/CustomView/Advance/%5B09%5DMatrix_Basic.md)
-    * [安卓自定义View进阶 - Matrix详解](https://github.com/GcsSloop/AndroidNote/blob/master/CustomView/Advance/%5B10%5DMatrix_Method.md)
-    * [安卓自定义View进阶 - Matrix Camera](https://github.com/GcsSloop/AndroidNote/blob/master/CustomView/Advance/%5B11%5DMatrix_3D_Camera.md)
-    * [安卓自定义View进阶 - 事件分发机制原理](https://github.com/GcsSloop/AndroidNote/blob/master/CustomView/Advance/%5B12%5DDispatch-TouchEvent-Theory.md)
-    * [安卓自定义View进阶 - 事件分发机制详解](https://github.com/GcsSloop/AndroidNote/blob/master/CustomView/Advance/%5B15%5DDispatch-TouchEvent-Source.md)
-    * [安卓自定义View进阶 - MotionEvent详解](https://github.com/GcsSloop/AndroidNote/blob/master/CustomView/Advance/%5B16%5DMotionEvent.md)
-    * [安卓自定义View进阶 - 特殊形状控件事件处理方案](https://github.com/GcsSloop/AndroidNote/blob/master/CustomView/Advance/%5B17%5Dtouch-matrix-region.md)  
-    * [安卓自定义View进阶 - 多点触控详解](https://github.com/GcsSloop/AndroidNote/blob/master/CustomView/Advance/%5B18%5Dmulti-touch.md)
+#### 运行步骤
 
+1. **编译项目**
+```bash
+mvn clean compile
+```
 
-* [ViewSupport - 自定义View工具包](https://github.com/GcsSloop/ViewSupport)
+2. **运行应用**
+```bash
+mvn spring-boot:run
+```
 
-******
+3. **访问应用**
+- API服务: http://localhost:8080
+- API文档: http://localhost:8080/swagger-ui.html
+- H2控制台: http://localhost:8080/h2-console
 
-## [教程类](https://github.com/GcsSloop/AndroidNote/tree/master/Course/README.md)
+### 2. Docker部署
 
-* [在AndroidStudio中使用PlantUML(Win)](https://github.com/GcsSloop/AndroidNote/blob/master/Course/HowToUsePlantUMLInAS.md)
-* [在AndroidStudio中使用PlantUML(Mac)](https://github.com/GcsSloop/AndroidNote/blob/master/Course/HowToUsePlantUMLInAS%5BMac%5D.md)
-* [优雅的发布Android开源库(论JitPack的优越性)](https://github.com/GcsSloop/AndroidNote/blob/master/Course/ReleaseLibraryByJitPack.md)
-* [用JitPack发布时附加文档和源码](https://github.com/GcsSloop/AndroidNote/blob/master/Course/jitpack-javadoc.md)
+#### 使用Docker Compose（推荐）
 
-******
+1. **构建并启动所有服务**
+```bash
+docker-compose up -d
+```
 
-## [Markdown](https://github.com/GcsSloop/AndroidNote/tree/master/Course/Markdown)
+2. **查看服务状态**
+```bash
+docker-compose ps
+```
 
-* [Markdown 快速入门](https://github.com/GcsSloop/AndroidNote/blob/master/Course/Markdown/markdown-start.md)  
-* [Markdown 基础语法](https://github.com/GcsSloop/AndroidNote/blob/master/Course/Markdown/markdown-grammar.md)
-* [Markdown 链接图片](https://github.com/GcsSloop/AndroidNote/blob/master/Course/Markdown/markdown-link.md)
-* [Markdown 编辑器](https://github.com/GcsSloop/AndroidNote/blob/master/Course/Markdown/markdown-editor.md)
+3. **停止服务**
+```bash
+docker-compose down
+```
 
-******
+## API接口文档
 
-## Tips
+### 基础信息
+- **Base URL**: `http://your-server:8080/api/v1`
+- **Content-Type**: `application/json`
 
-* [ArrayList与LinkedList遍历性能比较](https://github.com/GcsSloop/AndroidNote/blob/magic-world/ChaosCrystal/List%E9%81%8D%E5%8E%86%E6%80%A7%E8%83%BD.md)
-* [程序员不可不知的版权协议](https://github.com/GcsSloop/AndroidNote/blob/magic-world/ChaosCrystal/%E5%BC%80%E6%BA%90%E5%85%B1%E4%BA%AB%E5%8D%8F%E8%AE%AE.md)
+### 用户管理接口
 
-******
+#### 1. 创建用户
+```http
+POST /api/v1/users
+Content-Type: application/json
 
-## [速查表](https://github.com/GcsSloop/AndroidNote/tree/master/QuickChart/README.md)
+{
+  "username": "testuser",
+  "email": "test@example.com",
+  "fullName": "测试用户",
+  "phone": "13800138000",
+  "address": "北京市朝阳区"
+}
+```
 
-* [Canvas常用操作速查表](https://github.com/GcsSloop/AndroidNote/blob/master/QuickChart/Canvas.md)
-* [Path常用操作速查表](https://github.com/GcsSloop/AndroidNote/blob/master/QuickChart/Path.md)
-* [Matrix常用操作速查表](https://github.com/GcsSloop/AndroidNote/blob/master/QuickChart/Matrix.md)
-* [贝塞尔曲线常用操作速查表](https://github.com/GcsSloop/AndroidNote/blob/master/QuickChart/Bezier.md)
+#### 2. 获取所有用户
+```http
+GET /api/v1/users
+```
 
-******
+#### 3. 根据ID获取用户
+```http
+GET /api/v1/users/{id}
+```
 
-## [混沌水晶](https://github.com/GcsSloop/AndroidNote/tree/master/ChaosCrystal/README.md)
+#### 4. 更新用户
+```http
+PUT /api/v1/users/{id}
+Content-Type: application/json
 
-混沌水晶本身并没有太大功效，但与其他物品合成之后可能产生质的变化。
+{
+  "username": "updateduser",
+  "email": "updated@example.com",
+  "fullName": "更新用户"
+}
+```
 
-* [Android中dip、dp、sp、pt和px](https://github.com/GcsSloop/AndroidNote/blob/master/ChaosCrystal/Android%E4%B8%ADdip%E3%80%81dp%E3%80%81sp%E3%80%81pt%E5%92%8Cpx.md)
-* [AndroidStudio常用快捷键(Mac)](https://github.com/GcsSloop/AndroidNote/blob/master/ChaosCrystal/AndroidStudio%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE(Mac).md)
-* [在线查看Android API源码](https://github.com/GcsSloop/AndroidNote/blob/master/ChaosCrystal/HowToViewAPISourceOnline.md)
-* [录屏与GIF制作](https://github.com/GcsSloop/AndroidNote/blob/master/ChaosCrystal/%E5%BD%95%E5%B1%8F%E4%B8%8EGIF%E5%88%B6%E4%BD%9C.md)
-* [ADB常用命令](https://github.com/GcsSloop/AndroidNote/blob/master/ChaosCrystal/ADB%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.md)
+#### 5. 删除用户
+```http
+DELETE /api/v1/users/{id}
+```
 
-******
+### 健康检查接口
 
-## 开源库
+#### 1. 服务健康检查
+```http
+GET /api/v1/health
+```
 
-* [FontsManager - 快速替换字体](https://github.com/GcsSloop/FontsManager)
-* [Rocker － 自定义摇杆](https://github.com/GcsSloop/Rocker)
-* [LeafLoading － 进度条](https://github.com/GcsSloop/LeafLoading)
-* [Rotate3dAnimation - 3D旋转动画(修正版)](https://github.com/GcsSloop/Rotate3dAnimation)
+#### 2. 简单ping检查
+```http
+GET /api/v1/health/ping
+```
 
-------
+## 响应格式
 
-## 源码解析
+所有API响应都遵循统一格式：
 
-- [AtomicFile 源码解析](https://github.com/GcsSloop/AndroidNote/blob/master/SourceAnalysis/AtomicFile.md)
+```json
+{
+  "success": true,
+  "message": "操作成功",
+  "data": { ... },
+  "timestamp": "2025-01-06T10:30:00",
+  "code": 200
+}
+```
 
-## 传送门
+## 部署到服务器
 
-通往异世界的传送门，请谨慎使用。
+### 方式一：直接部署JAR包
 
-时空折跃准备完毕，[点击开始传送](https://github.com/GcsSloop/AndroidNote/tree/magic-world)。
+1. **准备服务器环境**
+```bash
+# 安装Java 17
+sudo apt update
+sudo apt install openjdk-17-jdk
 
-*****
+# 创建应用目录
+sudo mkdir -p /opt/api-service
+```
 
-## 博文修复计划
+2. **上传并运行应用**
+```bash
+# 上传jar包到服务器
+scp target/api-service-1.0.0.jar user@server:/opt/api-service/
 
-由于自己的知识水平有限，书写的文章难免会出现一些问题。
+# 在服务器上运行
+cd /opt/api-service
+java -jar api-service-1.0.0.jar --spring.profiles.active=prod
+```
 
-随着知识增长和知识面的扩大，发现了一些之前未曾注意到的问题，故有此博文修复计划，本次修复不仅会修复之前文章中的瑕疵和纰漏，甚至会对文章的知识结构稍作调整，所有修复的文章和调整后的内容都会在微博重新发布声明，点击下面关注我的微博可以第一时间了解到相关信息，另外据说关注我的微博会变帅哦。
+### 方式二：Docker部署
 
-**本次博文修复计划主要针对 [个人博客](http://www.gcssloop.com/#blog) 和 [GitHub](https://github.com/GcsSloop)，由于博主精力有限以及某些平台自身限制，对于其他平台仅能修复部分内容。**
+1. **安装Docker和Docker Compose**
+```bash
+# 安装Docker
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
 
-******
+# 安装Docker Compose
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.20.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+```
 
-## 版权声明
+2. **部署应用**
+```bash
+# 上传项目文件到服务器
+scp -r . user@server:/opt/api-service/
 
-* 所有原创文章(未进行特殊标识的均属于原创) 的著作权属于 **GcsSloop**。
-* 所有转载文章(标题注明`[转]`的所有文章) 的著作权属于原作者。
-* 所有译文文章(标题注明`[译]`的所有文章) 的原文著作权属于原作者，译文著作权属于 **GcsSloop**。
+# 在服务器上启动服务
+cd /opt/api-service
+docker-compose up -d
+```
 
-#### 转载注意事项
+## 环境变量配置
 
-除注明外，所有文章均采用 [Creative Commons BY-NC-ND 4.0（自由转载-保持署名-非商用-禁止演绎）](http://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh)协议发布。
+| 变量名 | 描述 | 默认值 |
+|--------|------|--------|
+| `SPRING_PROFILES_ACTIVE` | 激活的配置文件 | `default` |
+| `DB_USERNAME` | 数据库用户名 | `root` |
+| `DB_PASSWORD` | 数据库密码 | `password` |
+| `SERVER_PORT` | 服务端口 | `8080` |
 
-你可以在非商业的前提下免费转载，但同时你必须：
+## 监控和日志
 
-* 保持文章原文，不作修改。
-* 明确署名，即至少注明 `作者：GcsSloop` 字样以及文章的原始链接，且不得使用 `rel="nofollow"` 标记。
-* 商业用途请点击最下面图片联系本人。
-* 微信公众号转载一律不授权 `原创` 标志。
+### 健康检查
+- 服务状态: `GET /api/v1/health`
+- 简单检查: `GET /api/v1/health/ping`
+- Actuator: `GET /actuator/health`
 
-## 交流群
+## 故障排除
 
-QQ群：612310796  
-微信群：加我个人微信 GcsSloop，备注加群。
+### 常见问题
 
-### 作者微博: [@GcsSloop](http://weibo.com/GcsSloop)
+1. **端口被占用**
+```bash
+# 查看端口占用
+netstat -tulpn | grep :8080
+# 杀死占用进程
+sudo kill -9 <PID>
+```
 
-<a href="http://www.gcssloop.com/info/about/" target="_blank"> <img src="http://ww4.sinaimg.cn/large/005Xtdi2gw1f1qn89ihu3j315o0dwwjc.jpg" width="300"/> </a>
+2. **数据库连接失败**
+- 检查数据库服务是否启动
+- 验证连接参数（用户名、密码、URL）
+- 确认网络连通性
 
-[▲ 回到顶部](#top)
+3. **Docker容器无法启动**
+```bash
+# 查看容器日志
+docker logs api-service
+# 检查容器状态
+docker ps -a
+```
+
+## 安全建议
+
+1. **生产环境配置**
+   - 使用强密码
+   - 启用HTTPS
+   - 配置防火墙规则
+   - 定期更新依赖
+
+2. **API安全**
+   - 实现认证和授权
+   - 添加请求频率限制
+   - 输入验证和过滤

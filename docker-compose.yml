@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  # MySQL数据库
+  mysql:
+    image: mysql:8.0
+    container_name: api-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: api_service
+      MYSQL_USER: apiuser
+      MYSQL_PASSWORD: apipassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - api-network
+    restart: unless-stopped
+
+  # API服务
+  api-service:
+    build: .
+    container_name: api-service
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      DB_USERNAME: apiuser
+      DB_PASSWORD: apipassword
+      DB_URL: jdbc:mysql://mysql:3306/api_service?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    networks:
+      - api-network
+    restart: unless-stopped
+    volumes:
+      - ./logs:/var/log/api-service
+
+  # Nginx反向代理
+  nginx:
+    image: nginx:alpine
+    container_name: api-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+    depends_on:
+      - api-service
+    networks:
+      - api-network
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
+
+networks:
+  api-network:
+    driver: bridge
